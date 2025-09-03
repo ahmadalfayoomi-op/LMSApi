@@ -9,7 +9,6 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin,Student")] 
     public class QuizzesController : ControllerBase
     {
         private readonly IQuizRepository _quizRepository;

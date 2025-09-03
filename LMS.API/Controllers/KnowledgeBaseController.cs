@@ -7,7 +7,6 @@ namespace LMS.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class KnowledgeBaseController : ControllerBase
     {
         private readonly IKnowledgeBaseArticleRepository _articleRepo;

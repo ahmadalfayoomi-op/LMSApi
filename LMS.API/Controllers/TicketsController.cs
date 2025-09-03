@@ -7,7 +7,7 @@ namespace LMS.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+
     public class TicketsController : ControllerBase
     {
         private readonly ITicketRepository _ticketRepo;

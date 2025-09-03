@@ -7,7 +7,6 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] 
     public class StudentAssignmentsController : ControllerBase
     {
         private readonly IStudentAssignmentRepository _repo;
