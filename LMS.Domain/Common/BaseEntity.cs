@@ -1,6 +1,6 @@
 ﻿
 
-namespace LMS.Application.Common
+namespace LMS.Domain.Common
 {
     public class BaseEntity
     {

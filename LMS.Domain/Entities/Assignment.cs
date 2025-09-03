@@ -1,4 +1,4 @@
-﻿using LMS.Application.Common;
+﻿using LMS.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
