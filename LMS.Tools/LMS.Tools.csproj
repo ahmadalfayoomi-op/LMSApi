@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="whisper.cpp\.git\ms-persist.xml" />
+    <Content Include="whisper.cpp\.vs\VSWorkspaceState.json" />
+    <Content Include="whisper.cpp\.vs\whisper.cpp\v17\DocumentLayout.backup.json" />
+    <Content Include="whisper.cpp\.vs\whisper.cpp\v17\DocumentLayout.json" />
+    <Content Include="whisper.cpp\bindings\java\.idea\uiDesigner.xml" />
+    <Content Include="whisper.cpp\examples\whisper.android\.idea\compiler.xml" />
+    <Content Include="whisper.cpp\examples\whisper.android\.idea\gradle.xml" />
+    <Content Include="whisper.cpp\examples\whisper.android\.idea\misc.xml" />
+    <Content Include="whisper.cpp\examples\whisper.android\.idea\vcs.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="whisper.cpp\.devops\cublas.Dockerfile" />
+    <None Include="whisper.cpp\.devops\main-cuda.Dockerfile" />
+    <None Include="whisper.cpp\.devops\main-intel.Dockerfile" />
+    <None Include="whisper.cpp\.devops\main-musa.Dockerfile" />
+    <None Include="whisper.cpp\.devops\main.Dockerfile" />
+    <None Include="whisper.cpp\.github\workflows\bindings-go.yml" />
+    <None Include="whisper.cpp\.github\workflows\bindings-ruby.yml" />
+    <None Include="whisper.cpp\.github\workflows\build.yml" />
+    <None Include="whisper.cpp\.github\workflows\docker.yml" />
+    <None Include="whisper.cpp\.github\workflows\examples-wasm.yml" />
+    <None Include="whisper.cpp\.github\workflows\examples.yml" />
+    <None Include="whisper.cpp\.git\config" />
+    <None Include="whisper.cpp\.git\description" />
+    <None Include="whisper.cpp\.git\HEAD" />
+    <None Include="whisper.cpp\.git\hooks\applypatch-msg.sample" />
+    <None Include="whisper.cpp\.git\hooks\commit-msg.sample" />
+    <None Include="whisper.cpp\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="whisper.cpp\.git\hooks\post-update.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-applypatch.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-commit.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-merge-commit.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-push.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-rebase.sample" />
+    <None Include="whisper.cpp\.git\hooks\pre-receive.sample" />
+    <None Include="whisper.cpp\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="whisper.cpp\.git\hooks\push-to-checkout.sample" />
+    <None Include="whisper.cpp\.git\hooks\sendemail-validate.sample" />
+    <None Include="whisper.cpp\.git\hooks\update.sample" />
+    <None Include="whisper.cpp\.git\index" />
+    <None Include="whisper.cpp\.git\info\exclude" />
+    <None Include="whisper.cpp\.git\logs\HEAD" />
+    <None Include="whisper.cpp\.git\logs\refs\heads\master" />
+    <None Include="whisper.cpp\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="whisper.cpp\.git\objects\pack\pack-350e3d1bbfe95fcf3a5fd02819d27964fe3df400.idx" />
+    <None Include="whisper.cpp\.git\objects\pack\pack-350e3d1bbfe95fcf3a5fd02819d27964fe3df400.pack" />
+    <None Include="whisper.cpp\.git\objects\pack\pack-350e3d1bbfe95fcf3a5fd02819d27964fe3df400.rev" />
+    <None Include="whisper.cpp\.git\packed-refs" />
+    <None Include="whisper.cpp\.git\refs\heads\master" />
+    <None Include="whisper.cpp\.git\refs\remotes\origin\HEAD" />
+    <None Include="whisper.cpp\.vs\slnx.sqlite" />
+    <None Include="whisper.cpp\.vs\whisper.cpp\CopilotIndices\17.14.995.13737\CodeChunks.db" />
+    <None Include="whisper.cpp\.vs\whisper.cpp\CopilotIndices\17.14.995.13737\SemanticSymbols.db" />
+    <None Include="whisper.cpp\.vs\whisper.cpp\FileContentIndex\293f3c6f-9c3f-49f8-9719-8465b207f26e.vsidx" />
+    <None Include="whisper.cpp\.vs\whisper.cpp\v17\workspaceFileList.bin" />
+    <None Include="whisper.cpp\examples\whisper.android\.idea\.gitignore" />
+    <None Include="whisper.cpp\examples\whisper.android\.idea\.name" />
+    <None Include="whisper.cpp\examples\whisper.objc\whisper.objc.xcodeproj\project.pbxproj" />
+    <None Include="whisper.cpp\examples\whisper.swiftui\whisper.swiftui.xcodeproj\project.pbxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="whisper.cpp\.git\objects\info\" />
+    <Folder Include="whisper.cpp\.git\refs\tags\" />
+    <Folder Include="whisper.cpp\.vs\whisper.cpp\copilot-chat\2864e6c3\sessions\" />
+  </ItemGroup>
+
+</Project>

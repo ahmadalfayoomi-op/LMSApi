@@ -1,4 +1,5 @@
-﻿using LMS.Application.DTOs.Quizzes;
+﻿using LMS.Application.DTOs.Course;
+using LMS.Application.DTOs.Quizzes;
 
 
 namespace LMS.Application.Interfaces.Quizzes

@@ -9,6 +9,7 @@ namespace LMS.API.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class CoursesController : ControllerBase
     {
         private readonly ICourseRepository _courseRepo;
@@ -19,7 +20,7 @@ namespace LMS.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "Courses.View")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll(CancellationToken ct)
         {
             var courses = await _courseRepo.GetAllAsync(ct);
@@ -27,7 +28,7 @@ namespace LMS.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        [Authorize(Policy = "Courses.View")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int id, CancellationToken ct)
         {
             var course = await _courseRepo.GetByIdAsync(id, ct);

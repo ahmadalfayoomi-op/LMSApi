@@ -7,7 +7,7 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // Require authentication
+    [Authorize] 
     public class StudentQuizAttemptsController : ControllerBase
     {
         private readonly IStudentQuizAttemptRepository _attemptRepository;

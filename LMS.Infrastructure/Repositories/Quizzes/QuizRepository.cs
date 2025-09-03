@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LMS.Application.DTOs.Course;
 using LMS.Application.DTOs.Quizzes;
 using LMS.Application.Interfaces.Quizzes;
 using LMS.Domain.Entities;
@@ -58,6 +59,7 @@ namespace LMS.Infrastructure.Repositories.Quizzes
             await _context.SaveChangesAsync(ct);
             return _mapper.Map<QuizDto>(quiz);
         }
+
 
         public async Task<QuizDto> UpdateAsync(QuizDto quizDto, CancellationToken ct = default)
         {

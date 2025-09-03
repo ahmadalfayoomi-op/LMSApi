@@ -44,14 +44,28 @@ namespace Infrastructure.Repositories.User
         public async Task<UserDto?> GetByUsernameAsync(string username, CancellationToken ct = default)
         {
             var user = await _db.Users
-                .Include(u => u.Roles)                     
-                    .ThenInclude(r => r.Permissions)       
+                .Include(u => u.Roles)
+                    .ThenInclude(r => r.Permissions)
                 .FirstOrDefaultAsync(u => u.Username == username, ct);
 
             if (user == null) return null;
 
-            return _mapper.Map<UserDto>(user);
+            var userDto = new UserDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+                StringRoles = user.Roles.Select(r => r.Name).ToList(),
+                PermissionNames = user.Roles
+                    .SelectMany(r => r.Permissions)
+                    .Select(p => p.Key)
+                    .Distinct()
+                    .ToList(),
+                Password = user.Password,
+            };
+
+            return userDto;
         }
+
 
         public async Task<List<UserDto>> GetAllAsync(CancellationToken ct = default)
         {

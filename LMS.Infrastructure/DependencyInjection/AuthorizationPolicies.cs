@@ -229,6 +229,80 @@ namespace LMS.Infrastructure.Authorization
                 options.AddPolicy("StudentQuizAttempts.Delete", p =>
                     p.RequireClaim("permission", "StudentQuizAttempts.Delete"));
 
+                // Tickets
+                options.AddPolicy("Tickets.View", p =>
+                    p.RequireClaim("permission", "Tickets.View"));
+
+                options.AddPolicy("Tickets.Create", p =>
+                    p.RequireClaim("permission", "Tickets.Create"));
+
+                options.AddPolicy("Tickets.Update", p =>
+                    p.RequireClaim("permission", "Tickets.Update"));
+
+                options.AddPolicy("Tickets.Delete", p =>
+                    p.RequireClaim("permission", "Tickets.Delete"));
+
+                options.AddPolicy("Tickets.GetMessages", p =>
+                    p.RequireClaim("permission", "Tickets.GetMessages"));
+
+                options.AddPolicy("Tickets.AddMessage", p =>
+                    p.RequireClaim("permission", "Tickets.AddMessage"));
+
+
+
+                options.AddPolicy("TicketCategory.View", p =>
+                    p.RequireClaim("permission", "TicketCategory.View"));
+
+                options.AddPolicy("TicketCategory.Create", p =>
+                    p.RequireClaim("permission", "TicketCategory.Create"));
+
+                options.AddPolicy("TicketCategory.Update", p =>
+                    p.RequireClaim("permission", "TicketCategory.Update"));
+
+                options.AddPolicy("TicketCategory.Delete", p =>
+                    p.RequireClaim("permission", "TicketCategory.Delete"));
+
+
+                options.AddPolicy("KnowledgeBaseArticle.View", p =>
+                    p.RequireClaim("permission", "KnowledgeBaseArticle.View"));
+
+                options.AddPolicy("KnowledgeBaseArticle.Create", p =>
+                    p.RequireClaim("permission", "KnowledgeBaseArticle.Create"));
+
+                options.AddPolicy("KnowledgeBaseArticle.Update", p =>
+                    p.RequireClaim("permission", "KnowledgeBaseArticle.Update"));
+
+                options.AddPolicy("KnowledgeBaseArticle.Delete", p =>
+                    p.RequireClaim("permission", "KnowledgeBaseArticle.Delete"));
+
+
+
+
+                options.AddPolicy("Student.View", p =>
+                    p.RequireClaim("permission", "Student.View"));
+
+                options.AddPolicy("Student.Create", p =>
+                    p.RequireClaim("permission", "Student.Create"));
+
+                options.AddPolicy("Student.Update", p =>
+                    p.RequireClaim("permission", "Student.Update"));
+
+                options.AddPolicy("Student.Delete", p =>
+                    p.RequireClaim("permission", "Student.Delete"));
+
+
+
+                options.AddPolicy("Instructor.View", p =>
+                    p.RequireClaim("permission", "Instructor.View"));
+
+                options.AddPolicy("Instructor.Create", p =>
+                    p.RequireClaim("permission", "Instructor.Create"));
+
+                options.AddPolicy("Instructor.Update", p =>
+                    p.RequireClaim("permission", "Instructor.Update"));
+
+                options.AddPolicy("Instructor.Delete", p =>
+                    p.RequireClaim("permission", "Instructor.Delete"));
 
             });
 

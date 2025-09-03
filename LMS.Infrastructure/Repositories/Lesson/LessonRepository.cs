@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
-using LMS.Application.DTOs.Student;
+using LMS.Application.DTOs.Course;
+using LMS.Application.Interfaces.Configuration;
 using LMS.Application.Interfaces.Lesson;
+using LMS.Domain.Entities;
 using LMS.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,11 +12,13 @@ namespace LMS.Infrastructure.Repositories.Lesson
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IFileService _fileService;
 
-        public LessonRepository(AppDbContext context, IMapper mapper)
+        public LessonRepository(AppDbContext context, IMapper mapper, IFileService fileService)
         {
             _context = context;
             _mapper = mapper;
+            _fileService = fileService;
         }
 
         public async Task<IEnumerable<LessonDto>> GetAllByCourseAsync(int id, CancellationToken ct = default)
@@ -32,6 +36,14 @@ namespace LMS.Infrastructure.Repositories.Lesson
         public async Task<LessonDto> AddAsync(LessonDto lessonDto, CancellationToken ct = default)
         {
             var Lesson = _mapper.Map<LMS.Domain.Entities.Lesson>(lessonDto);
+
+            if (lessonDto.ContentUploaded != null)
+            {
+                var imagePath = await _fileService.SaveFileAsync(lessonDto.ContentUploaded, "App_File/lessons");
+                Lesson.ContentUrl = imagePath;
+                lessonDto.ContentUrl = imagePath;
+            }
+
             _context.Lessons.Add(Lesson);
             await _context.SaveChangesAsync(ct);
 

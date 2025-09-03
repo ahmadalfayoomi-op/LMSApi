@@ -28,6 +28,13 @@ namespace LMS.Infrastructure.Repositories.Configuration
                 throw new UnauthorizedAccessException("StudentId claim not found.");
             return studentId;
         }
+        public int GetInstructorId()
+        {
+            var claim = _httpContextAccessor.HttpContext?.User?.FindFirst("instructorId")?.Value;
+            if (claim == null || !int.TryParse(claim, out var studentId))
+                throw new UnauthorizedAccessException("InstructorId claim not found.");
+            return studentId;
+        }
     }
 
 }

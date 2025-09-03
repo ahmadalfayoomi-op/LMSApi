@@ -50,10 +50,11 @@ namespace LMS.Infrastructure.Repositories.Chat
 
         public async Task<ChatMessageDto> SendMessageAsync(ChatMessageDto messageDto, IFormFile? attachment = null, CancellationToken ct = default)
         {
+            var userId = 1;
             var message = new ChatMessage
             {
                 ChatRoomId = messageDto.ChatRoomId,
-                UserId = _userContext.GetUserId(),
+                UserId = userId,
                 Message = messageDto.Message,
                 SentAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow

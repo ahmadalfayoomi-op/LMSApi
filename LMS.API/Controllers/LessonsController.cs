@@ -1,4 +1,4 @@
-﻿using LMS.Application.DTOs.Student;
+﻿using LMS.Application.DTOs.Course;
 using LMS.Application.Interfaces.Lesson;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin,Student")] // Only Admins and Students
+    [Authorize(Roles = "Admin,Student")] 
     public class LessonsController : ControllerBase
     {
         private readonly ILessonRepository _lessonRepository;
@@ -38,8 +38,9 @@ namespace LMS.API.Controllers
 
         // POST: api/lessons
         [HttpPost]
+        [RequestSizeLimit(524288000)]
         [Authorize(Policy = "Lessons.Create")]
-        public async Task<ActionResult<LessonDto>> Create([FromBody] LessonDto dto, CancellationToken ct)
+        public async Task<ActionResult<LessonDto>> Create([FromForm] LessonDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 

@@ -3,6 +3,7 @@
 using AutoMapper;
 using LMS.Application.DTOs.Course;
 using LMS.Application.Interfaces.Course;
+using LMS.Domain.Entities;
 using LMS.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +27,7 @@ namespace Infrastructure.Repositories.Course
 
         public async Task<CourseDto?> GetByIdAsync(int id, CancellationToken ct = default)
         {
-            var Course = await _db.Courses.FindAsync(new object[] { id }, ct);
+            var Course = await _db.Courses.Include(c => c.Lessons).FirstOrDefaultAsync(c => c.Id == id, ct);
             return Course == null ? null : _mapper.Map<CourseDto>(Course);
         }
         public async Task<CourseDto> AddAsync(CourseDto CourseDto, CancellationToken ct = default)

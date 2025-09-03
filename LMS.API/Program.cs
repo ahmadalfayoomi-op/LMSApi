@@ -1,8 +1,9 @@
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 using LMS.API.Middlewares;
 using LMS.Application;
 using LMS.Infrastructure.Authorization;
 using LMS.Infrastructure.DependencyInjection;
+using LMS.Infrastructure.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -15,6 +16,7 @@ builder.Services.AddControllers()
     {
         config.RegisterValidatorsFromAssemblyContaining<Program>();
     });
+
 builder.Services.AddApplication().AddInfrastructure(builder.Configuration).AddRepositories();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
@@ -74,6 +76,18 @@ builder.Services.AddSwaggerGen(option =>
         }
     });
 });
+builder.Services.AddSignalR();   // 👈 THIS is required
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            .SetIsOriginAllowed(_ => true); // allow all origins
+    });
+});
 
 
 var app = builder.Build();
@@ -87,9 +101,11 @@ if (app.Environment.IsDevelopment())
 app.UseErrorHandling();
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAll"); // 👈 enable CORS
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chathub"); 
 
 app.Run();

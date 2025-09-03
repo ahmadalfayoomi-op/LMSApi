@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using LMS.Application.DTOs.Assignment;
 using LMS.Application.DTOs.Auth;
+using LMS.Application.DTOs.Chat;
 using LMS.Application.DTOs.Course;
 using LMS.Application.DTOs.Others;
+using LMS.Application.DTOs.Quizzes;
 using LMS.Application.DTOs.Student;
+using LMS.Application.DTOs.Ticket;
 using LMS.Application.DTOs.User;
 using LMS.Domain.Entities;
 
@@ -27,15 +30,38 @@ namespace LMS.Application.Mapping
                 .ForMember(dest => dest.ProfileImage, opt => opt.Ignore());
 
 
+
+            CreateMap<StudentDto, User>()
+                .ForMember(dest => dest.CreatedById, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
+                .ForMember(dest => dest.UpdatedById, opt => opt.Ignore());
+
             // Register mappings
             CreateMap<User, RegisterDto>();
             CreateMap<RegisterDto, User>();
 
-            CreateMap<Student, RegisterDto>();
-            CreateMap<RegisterDto, Student>();
+            CreateMap<Instructor, RegisterDto>();
+            CreateMap<RegisterDto, Instructor>();
 
 
+            CreateMap<RegisterDto, Student>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore()) 
+                .ReverseMap();
 
+
+            CreateMap<RegisterDto, Instructor>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ReverseMap();
+
+
+            CreateMap<RegisterDto, Student>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+
+            CreateMap<RegisterDto, Instructor>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());      
+            
             // Role mappings
             CreateMap<Role, RoleDto>();
             CreateMap<RoleDto, Role>()
@@ -43,6 +69,11 @@ namespace LMS.Application.Mapping
 
             // Course mappings
             CreateMap<Course, CourseDto>();
+            CreateMap<CourseEvent, CourseEventDto>();
+            CreateMap<CourseReview, CourseReviewDto>();
+            CreateMap<CourseViewLog, CourseViewLogDto>();
+            CreateMap<FavoriteCourse, FavoriteCourseDto>();
+            CreateMap<Lesson, LessonDto>().ReverseMap();
             CreateMap<CourseDto, Course>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
@@ -72,6 +103,16 @@ namespace LMS.Application.Mapping
 
             CreateMap<Bookmark, BookmarkDto>().ReverseMap();
             CreateMap<Certificate, CertificateDto>().ReverseMap();
+            CreateMap<Discussion, DiscussionDto>().ReverseMap();
+            CreateMap<DiscussionReply, DiscussionReplyDto>().ReverseMap();
+            CreateMap<Enrollment, EnrollmentDto>().ReverseMap();
+            CreateMap<StudentActivityLog, StudentActivityLogDto>().ReverseMap();
+            CreateMap<StudentAnswer, StudentAnswerDto>().ReverseMap();
+            CreateMap<StudentAssignment, StudentAssignmentDto>().ReverseMap();
+            CreateMap<StudentBadge, StudentBadgeDto>().ReverseMap();
+            CreateMap<StudentNote, StudentNoteDto>().ReverseMap();
+            CreateMap<StudentProgress, StudentProgressDto>().ReverseMap();
+            CreateMap<StudentQuizAttempt, StudentQuizAttemptDto>().ReverseMap();
 
 
             // Lesson mappings
@@ -89,6 +130,40 @@ namespace LMS.Application.Mapping
             // Assignment mappings
             CreateMap<Assignment, AssignmentDto>().ReverseMap();
             CreateMap<StudentAssignment, StudentAssignmentDto>().ReverseMap();
+
+            // Chat mappings
+            CreateMap<ChatMessage, ChatMessageDto>().ReverseMap();
+            CreateMap<ChatRoom, ChatRoomDto>().ReverseMap();
+            CreateMap<StudentAssignment, StudentAssignmentDto>().ReverseMap();
+
+
+            // Quiz mappings
+            CreateMap<Quiz, QuizDto>().ReverseMap();
+            CreateMap<Question, QuestionDto>().ReverseMap();
+            CreateMap<Answer, AnswerDto>().ReverseMap();
+
+
+            // Tickets mapping
+            CreateMap<Ticket, TicketDto>()
+                .ForMember(dest => dest.TicketCategoryName, opt => opt.MapFrom(src => src.TicketCategory != null ? src.TicketCategory.Name : null))
+                .ForMember(dest => dest.CreatedByName, opt => opt.MapFrom(src => src.User != null ? src.User.Username : null))
+                .ForMember(dest => dest.AssignedToName, opt => opt.MapFrom(src => src.AssignedTo != null ? src.AssignedTo.Username : null))
+                .ReverseMap();
+
+            CreateMap<TicketMessage, TicketMessageDto>()
+                .ForMember(dest => dest.SenderName, opt => opt.MapFrom(src => src.Sender.Username))
+                .ReverseMap();
+
+            CreateMap<TicketAttachment, TicketAttachmentDto>().ReverseMap();
+
+            CreateMap<KnowledgeBaseArticle, KnowledgeBaseArticleDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.TicketCategory != null ? src.TicketCategory.Name : null))
+                .ReverseMap();
+
+            CreateMap<TicketCategory, TicketCategoryDto>()
+                .ForMember(dest => dest.Articles, opt => opt.MapFrom(src => src.KnowledgeBaseArticles))
+                .ReverseMap();
+
 
         }
     }

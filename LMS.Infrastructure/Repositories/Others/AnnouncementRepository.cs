@@ -18,10 +18,9 @@ namespace LMS.Infrastructure.Repositories.Others
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AnnouncementDto>> GetAllByCourseAsync(int courseId, CancellationToken ct = default)
+        public async Task<IEnumerable<AnnouncementDto>> GetAllByCourseAsync(CancellationToken ct = default)
         {
             var announcements = await _context.Announcements
-                .Where(a => a.CourseId == courseId)
                 .OrderByDescending(a => a.PublishedAt)
                 .ToListAsync(ct);
 

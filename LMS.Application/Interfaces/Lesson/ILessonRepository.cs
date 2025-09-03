@@ -1,5 +1,4 @@
-﻿using LMS.Application.DTOs.Student;
-
+﻿using LMS.Application.DTOs.Course;
 
 namespace LMS.Application.Interfaces.Lesson
 {

@@ -3,7 +3,6 @@ using AutoMapper;
 using LMS.Application.DTOs.Student;
 using LMS.Application.Interfaces.Configuration;
 using LMS.Application.Interfaces.Student;
-using LMS.Domain.Entities;
 using LMS.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,8 +39,8 @@ namespace Infrastructure.Repositories.Student
         }
         public async Task<StudentDto?> GetByUserIdAsync(int id, CancellationToken ct = default)
         {
-            var Student = await _db.Students.FirstOrDefaultAsync(c=>c.UserId==id , ct);
-            return Student == null ? null : _mapper.Map<StudentDto>(Student);
+            var Student = await _db.Students.FirstOrDefaultAsync(c => c.UserId == id, ct);
+            return Student == null ? null : _mapper.Map<StudentDto>((object)Student);
         }
         public async Task<StudentDto> AddAsync(StudentDto studentDto, CancellationToken ct = default)
         {

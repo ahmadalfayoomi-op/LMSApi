@@ -6,6 +6,7 @@ namespace LMS.Application.Interfaces.Configuration
     {
         int GetUserId();
         int GetStudentId();
+        int GetInstructorId();
     }
 
 }

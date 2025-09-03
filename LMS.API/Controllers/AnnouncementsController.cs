@@ -7,7 +7,7 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] 
+    [Authorize]
     public class AnnouncementsController : ControllerBase
     {
         private readonly IAnnouncementRepository _repo;
@@ -17,11 +17,11 @@ namespace LMS.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet("course/{courseId}")]
-        [Authorize(Policy = "Announcements.View")]
-        public async Task<IActionResult> GetAllByCourse(int courseId, CancellationToken ct)
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllByCourse(CancellationToken ct)
         {
-            var announcements = await _repo.GetAllByCourseAsync(courseId, ct);
+            var announcements = await _repo.GetAllByCourseAsync(ct);
             return Ok(announcements);
         }
 

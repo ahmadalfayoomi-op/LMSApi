@@ -1,6 +1,4 @@
-﻿
-
-namespace LMS.Application.DTOs.Course
+﻿namespace LMS.Application.DTOs.Course
 {
     public class CourseDto
     {
@@ -12,5 +10,6 @@ namespace LMS.Application.DTOs.Course
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public int? CreatedById { get; set; }
         public int? UpdatedById { get; set; }
+        public List<LessonDto>? Lessons { get; set; }
     }
 }

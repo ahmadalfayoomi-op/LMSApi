@@ -7,7 +7,7 @@ namespace LMS.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")] // Only Admin can manage roles
+    [Authorize(Roles = "Admin")] 
     public class RolesController : ControllerBase
     {
         private readonly IRoleRepository _roleRepository;

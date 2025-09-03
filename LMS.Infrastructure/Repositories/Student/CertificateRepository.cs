@@ -4,7 +4,6 @@ using LMS.Application.Interfaces.Configuration;
 using LMS.Application.Interfaces.Student;
 using LMS.Domain.Entities;
 using LMS.Infrastructure.Data;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;

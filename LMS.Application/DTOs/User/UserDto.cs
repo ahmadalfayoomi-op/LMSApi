@@ -19,6 +19,11 @@ namespace LMS.Application.DTOs.User
         public int? CreatedById { get; set; }
         public int? UpdatedById { get; set; }
         public List<RoleDto> Roles { get; set; } = new();
+
+        public List<string> StringRoles { get; set; } = new();
+
+        // Flattened permissions
+        public List<string> PermissionNames { get; set; } = new();
     }
 
 }

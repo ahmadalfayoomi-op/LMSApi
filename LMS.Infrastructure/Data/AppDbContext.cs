@@ -50,6 +50,12 @@ namespace LMS.Infrastructure.Data
         public DbSet<CourseViewLog> CourseViewLogs => Set<CourseViewLog>();
         public DbSet<FavoriteCourse> FavoriteCourses => Set<FavoriteCourse>();
         public DbSet<Notification> Notifications => Set<Notification>();
+        public DbSet<Instructor> Instructors => Set<Instructor>();
+        public DbSet<Ticket> Tickets => Set<Ticket>();
+        public DbSet<TicketMessage> TicketMessages => Set<TicketMessage>();
+        public DbSet<KnowledgeBaseArticle> KnowledgeBaseArticles => Set<KnowledgeBaseArticle>();
+        public DbSet<TicketCategory> TicketCategories => Set<TicketCategory>();
+        public DbSet<TicketAttachment> TicketAttachments => Set<TicketAttachment>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -64,6 +70,28 @@ namespace LMS.Infrastructure.Data
                 .HasOne(sb => sb.Badge)
                 .WithMany(b => b.StudentBadges)
                 .HasForeignKey(sb => sb.BadgeId);
+
+            builder.Entity<Lesson>()
+                .HasOne(l => l.Course)
+                .WithMany(c => c.Lessons)
+                .HasForeignKey(l => l.CourseId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Ticket>()
+                .HasOne(t => t.User)
+                .WithMany()
+                .HasForeignKey(t => t.UserId);
+
+            builder.Entity<TicketMessage>()
+                .HasOne(tm => tm.Ticket)
+                .WithMany(t => t.Messages)
+                .HasForeignKey(tm => tm.TicketId);
+
+            builder.Entity<TicketMessage>()
+                .HasOne(tm => tm.Sender)
+                .WithMany()
+                .HasForeignKey(tm => tm.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<User>()
                 .HasMany(u => u.Roles)
@@ -109,7 +137,7 @@ namespace LMS.Infrastructure.Data
             var entries = ChangeTracker.Entries<BaseEntity>();
             int? currentUserId = null;
 
-            if (_httpContextAccessor.HttpContext != null)
+            if (_httpContextAccessor?.HttpContext != null)
             {
                 var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
                 if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int uid))
